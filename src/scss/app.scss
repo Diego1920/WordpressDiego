@@ -1,0 +1,32 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:300,400,700&display=swap&subset=latin-ext');
+
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+@import "../../node_modules/tiny-slider/src/tiny-slider.scss";
+@import "scrollspy";
+@import "yt-player";
+@import "animation";
+@import "./components/button";
+@import "./components/navigation";
+@import "./components/article";
+
+
+html, body {
+  color:#000;
+  scroll-behavior: smooth;
+  
+}
+
+html {
+ // overflow-x: hidden;
+}
+
+body {
+  @apply antialiased;
+  font-family: "Ubuntu";
+}

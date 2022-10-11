@@ -1,0 +1,72 @@
+{#
+  Main menu navigation
+
+  Data is loaded from the global menu field
+
+  @param {array} items
+  {
+    @param {string}  title
+    @param {string}  url
+  }
+  @param {object}  cta
+  {
+    @param {string}  title
+    @param {string}  url
+  }
+
+  @param {object}  logo - loaded from global menu field. options.logo
+  {
+    @param {string}  type  can be "text" or "image"
+    @param {string}  url  -  on logo click
+    @param {string}  text - if type is "text" use this as brand name, if type is "image" this will be used as alt image text
+    @param {string}  image - if type is "image" use this as brand logo
+  }
+#}
+
+{# Output #}
+<nav class="c-navigation navigation bg-gray-300 p-6 absolute top-0 left-0 w-full z-10">
+  <div class="container h-full flex items-center justify-between flex-wrap">
+    <div class="flex items-center text-gray-800 mr-6">
+      {% if options.logo.type == "text" %}
+      <a href="{{ options.logo.url }}" class="font-semibold text-xl tracking-tight text-gray-900">{{ options.logo.text }}</a>
+      {% elseif options.logo.type == "image" %}
+      <a href="{{ options.logo.url }}" class="outline-none"><img src="{{ options.logo.image }}" class="" alt="{{ options.logo.text }}" /></a>
+      {% endif %}
+    </div>
+    <div class="block lg:hidden">
+      <button id="navigationToggle"
+        class="flex items-center px-3 py-2 rounded bg-white hover:shadow">
+        <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <title>Menu</title>
+          <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+        </svg>
+      </button>
+    </div>
+    <nav class="navigation__items w-full h-full lg:items-center lg:w-auto">
+      <ul class="text-sm lg:flex-grow lg:mr-8">
+        {% for item in navigation.items %}
+        <li class="navigation__item block lg:inline-block relative">
+          <a href="{{ item.url }}" class="block lg:inline-block px-0 py-2 lg:py-2 lg:px-2 text-gray-700 hover:text-gray-900 outline-none">{{ item.title }}</a>
+          {# submenu #}
+          {% if item.items|length %}
+          <ul class="navigation__subitems lg:absolute lg:top-8 bg-white rounded-lg shadow-md overflow-hidden">
+            {% for subitem in item.items %}
+            <li class="navigation__subitem">
+              <a href="{{ subitem.url }}" class="block lg:inline-block p-2 min-w-128px hover:text-white hover:bg-orange-100">{{ subitem.title }}</a>
+            </li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+      {% if navigation.cta %}
+      <div class="fixed bottom-0 my-8 lg:my-0 lg:static">
+        <a href="{{ navigation.cta.url }}"
+          class="inline-block button">{{ navigation.cta.title }}</a>
+      </div>
+      {% endif %}
+    </nav>{# navigation__items #}
+  </div>
+
+</nav>

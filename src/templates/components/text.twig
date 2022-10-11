@@ -1,0 +1,34 @@
+{#
+  Section with text
+
+  We set a class .article to the div that contains wysiwyg content.
+  We have to extact styles in the css for the layout, so the html in
+  the content can be naked.
+
+  @param {string}  title
+  @param {wysiwyg} text
+  @param {object} cta 
+  {
+        @param {string}  title
+        @param {string}  url
+  }
+#}
+
+{# Output #}
+<section class="c-text container">
+  <div class="row">
+    <div class="col-12 lg:col-8 xl:col-6 mx-auto article">
+      {% if params.title %}
+      <h2 class="text-3xl lg:text-5xl mb-4 lg:mb-8 leading-tight">{{ params.title }}</h2>
+      {% endif %}
+      {% if params.text %}
+      <div class="mb-4 lg:mb-8">{{ params.text|raw }}</div>
+      {% endif %}
+      {% if params.cta %}
+      <div class="mb-4 lg:mb-8">
+        {% include '/templates/components/button.twig' with { params: params.cta } %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>

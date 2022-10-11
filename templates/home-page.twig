@@ -1,0 +1,12 @@
+{% for post in posts %}
+<div class="container mx-auto my-12 border-b">
+
+<article>
+    <h1>Producto: {{post.post_title}}</h1>
+	<h1>Categoria: {{post.categoria_de_producto}}</h1>
+	<h1>Descripcion para listado: {{post.descripcion_para_listado}}</h1>
+	<h1>Precio: {{post.precio}}</h1>
+	<h1>Post relacionados: {{post.posts_relacionados}}</h1>
+	<h1>Productos relacionados: {{post.productos_relacionados}}</h1>
+</article>
+{% endfor %}</div>

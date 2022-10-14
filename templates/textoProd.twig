@@ -16,14 +16,14 @@
 		<div class="container px-4 md:px-0 max-w-6xl mx-auto -mt-32">
 							
 
-					
+					<!---->
 				
 		
 				<div class="flex flex-wrap justify-between pt-12 -mx-6">
 					<!--1/3 col -->
 					<div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
 						<div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow-lg">
-							<a href="#" class="flex flex-wrap no-underline hover:no-underline">
+							<a href="http://reto1.local/index.php/productos/carne/" class="flex flex-wrap no-underline hover:no-underline">
 								<img src="http://reto1.local/wp-content/uploads/2022/10/carne.jpeg" class="h-80 w-full rounded-t pb-6">
 								<p class="w-full text-gray-600 text-xs md:text-sm px-6">Categoria: </p>
 								<div class="w-full font-bold text-xl text-gray-900 px-6">Carne
@@ -68,7 +68,19 @@
 						</div>
 						
 					</div>
+{% for post in posts %}
+<div class="container mx-auto my-12 border-b">
 
+<article>
+	1: {{post.post_title}}
+    <h1>Producto: {{post.post_productos}}</h1>
+	<h1>Categoria: {{post.post_categoria_de_producto}}</h1>
+	<h1>Descripcion para listado: {{post.descripcion_para_listado}}</h1>
+	<h1>Precio: {{post.precio}}</h1>
+	<h1>Post relacionados: {{post.posts_relacionados}}</h1>
+	<h1>Productos relacionados: {{post.productos_relacionados}}</h1>
+</article>
+{% endfor %}</div>
 
 			<!--1/3 col -->
 					<div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
